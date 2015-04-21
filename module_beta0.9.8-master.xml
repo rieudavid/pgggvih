@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_beta0.9.8-master" default="compile.module.beta0.9.8-master">
+  <dirname property="module.beta0.9.8-master.basedir" file="${ant.file.module_beta0.9.8-master}"/>
+  
+  <property name="module.jdk.home.beta0.9.8-master" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.beta0.9.8-master" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.beta0.9.8-master" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.beta0.9.8-master" value="-encoding UTF-8 -source 1.6 ${compiler.args}"/>
+  
+  <property name="beta0.9.8-master.output.dir" value="${module.beta0.9.8-master.basedir}/out/production/beta0.9.8-master"/>
+  <property name="beta0.9.8-master.testoutput.dir" value="${module.beta0.9.8-master.basedir}/out/test/beta0.9.8-master"/>
+  
+  <path id="beta0.9.8-master.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="beta0.9.8-master.module.production.classpath"/>
+  
+  <path id="beta0.9.8-master.runtime.production.module.classpath">
+    <pathelement location="${beta0.9.8-master.output.dir}"/>
+  </path>
+  
+  <path id="beta0.9.8-master.module.classpath">
+    <pathelement location="${beta0.9.8-master.output.dir}"/>
+  </path>
+  
+  <path id="beta0.9.8-master.runtime.module.classpath">
+    <pathelement location="${beta0.9.8-master.testoutput.dir}"/>
+    <pathelement location="${beta0.9.8-master.output.dir}"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.beta0.9.8-master">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.beta0.9.8-master">
+    <patternset refid="excluded.from.module.beta0.9.8-master"/>
+  </patternset>
+  
+  
+  <target name="compile.module.beta0.9.8-master" depends="compile.module.beta0.9.8-master.production,compile.module.beta0.9.8-master.tests" description="Compile module beta0.9.8-master"/>
+  
+  <target name="compile.module.beta0.9.8-master.production" depends="register.custom.compilers" description="Compile module beta0.9.8-master; production classes"/>
+  
+  <target name="compile.module.beta0.9.8-master.tests" depends="register.custom.compilers,compile.module.beta0.9.8-master.production" description="compile module beta0.9.8-master; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.beta0.9.8-master" description="cleanup module">
+    <delete dir="${beta0.9.8-master.output.dir}"/>
+    <delete dir="${beta0.9.8-master.testoutput.dir}"/>
+  </target>
+</project>
